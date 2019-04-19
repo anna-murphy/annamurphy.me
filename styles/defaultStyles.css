@@ -2,15 +2,11 @@ body
 {
     margin: 0 10%;
     text-align: justify;
+    font-family: Nunito;
 }
 
 h1 
 {
     font-family: Raleway;
     text-align: center;
-}
-
-p 
-{
-    font-family: Nunito;
 }
