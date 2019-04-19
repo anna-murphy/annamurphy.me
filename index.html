@@ -4,12 +4,40 @@
         <title>Anna Murphy</title>
     </head>
     <body>
+        
+        <p class="garbageable">hsakdjashdlakjsndlakjdnassada</p>
+        
+        <p class="garbageable">dkjashdiuahsdoiuhasdijabksdjhaksjdhasd</p>
 
-        <p>Hello Everyone.</p> 
-        
-        <p>I may be many things, but a web developer is not (yet) one.</p> 
-        
-        <p>So, I hope you enjoy my mid 90's web design choices.</p>
+        <p class="garbageable">asdijhasuidhoasiudhoaisudhasdasdasd</p>
+                        
+        <script>
+
+            const POSSIBLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:;<>,.?/\|[]{}`~!@#$%^&*()_-+=";
+            
+            /**
+             * Generates garbo text
+             */
+            function makeGarbage(length) {
+                let text = "";
+                for (var i = 0; i < length; i++){
+                    text += POSSIBLE.charAt(Math.floor(Math.random() * POSSIBLE.length));
+                }
+                return text;
+            }
+                        
+            var garbageables = document.getElementsByClassName("garbageable");
+            
+            for (var i = 0; i < garbageables.length; i++) {
+                let temp = i;
+                garbageables[i].addEventListener("mouseover", () => {
+                    let len = garbageables[temp].innerHTML.length;
+                    let newText = makeGarbage(len);
+                    garbageables[temp].innerHTML = newText;
+                });
+            }
+            
+        </script>
 
     </body>
 </html>
