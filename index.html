@@ -13,6 +13,9 @@
                         
         <script>
 
+            /**
+             * List of possible characters to replace with.
+             */
             const POSSIBLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:;<>,.?/\|[]{}`~!@#$%^&*()_-+=";
             
             /**
@@ -25,9 +28,15 @@
                 }
                 return text;
             }
-                        
+            
+            /**
+             * Creates a collection of text that can be garbaged
+             */
             var garbageables = document.getElementsByClassName("garbageable");
             
+            /**
+             * Adds event handlers to all the garbageables
+             */
             for (var i = 0; i < garbageables.length; i++) {
                 let temp = i;
                 garbageables[i].addEventListener("mouseover", () => {
