@@ -15,13 +15,19 @@ for (let i = 0; i < toGarbage.length; i++) {
     let temp = i;
     let newContent = "";
     let oldContent = toGarbage[i].innerHTML;
+    toGarbage[i].innerHTML = "";
     for (let j = 0; j < oldContent.length; j++ ) {
         let c = oldContent[j];
         if (c == " ") {
-            newContent += " ";
+            newContent = document.createTextNode(" ");
         } else {
-            newContent += "<span class='garbageable'>" + c + "</span>";            
+            let span = document.createElement("span");
+            span.className += " garbageable";
+            span.appendChild(document.createTextNode(c));
+            span.style.color = '#' + Math.floor(Math.random() * 16777216).toString(16);
+            newContent = span;            
         }
+        toGarbage[i].appendChild(newContent);
     }
     toGarbage[i].innerHTML = newContent;
 }
@@ -42,3 +48,4 @@ for (let i = 0; i < garbageables.length; i++) {
             POSSIBLE.charAt(Math.floor(Math.random() * POSSIBLE.length));;
     });
 }
+
