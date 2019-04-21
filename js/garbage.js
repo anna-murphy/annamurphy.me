@@ -4,14 +4,26 @@
 var POSSIBLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:;,.?/\|`~!@#$%^&*_-+=";
 
 /**
- * Generates garbo text
+ * Creates a collection of elements that are translated to garbageables.
  */
-function makeGarbage(length) {
-    let text = "";
-    for (let i = 0; i < length; i++){
-        text += POSSIBLE.charAt(Math.floor(Math.random() * POSSIBLE.length));
+var toGarbage = document.getElementsByClassName("toGarbage");
+
+/**
+ * Wraps all text in toGarbage classes into garbageable spans
+ */
+for (let i = 0; i < toGarbage.length; i++) {
+    let temp = i;
+    let newContent = "";
+    let oldContent = toGarbage[i].innerHTML;
+    for (let j = 0; j < oldContent.length; j++ ) {
+        let c = oldContent[j];
+        if (c == " ") {
+            newContent += " ";
+        } else {
+            newContent += "<span class='garbageable'>" + c + "</span>";            
+        }
     }
-    return text;
+    toGarbage[i].innerHTML = newContent;
 }
 
 /**
@@ -26,15 +38,7 @@ for (let i = 0; i < garbageables.length; i++) {
     let temp = i;
     garbageables[i].addEventListener("mouseover", () => {
         let words = garbageables[temp].innerHTML.trim().split(" ");
-        let newText = "";
-        for (let j = 0; j < words.length; j++) {
-            let word = words[j];
-            if (Math.random() < 0.3){
-                newText += makeGarbage(word.length) + " ";
-            } else {
-                newText += word + " ";                            
-            }
-        }
-        garbageables[temp].innerHTML = newText;
+        garbageables[temp].innerHTML = 
+            POSSIBLE.charAt(Math.floor(Math.random() * POSSIBLE.length));;
     });
 }
