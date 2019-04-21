@@ -44,6 +44,7 @@ for (let i = 0; i < garbageables.length; i++) {
     let temp = i;
     garbageables[i].addEventListener("mouseover", () => {
         let words = garbageables[temp].innerHTML.trim().split(" ");
+        garbageables[temp].style.color = '#' + Math.floor(Math.random() * 16777216).toString(16);
         garbageables[temp].innerHTML = 
             POSSIBLE.charAt(Math.floor(Math.random() * POSSIBLE.length));;
     });
